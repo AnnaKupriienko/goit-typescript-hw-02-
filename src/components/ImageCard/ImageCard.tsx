@@ -1,11 +1,23 @@
 import { SlLike } from "react-icons/sl";
 import css from "./ImageCard.module.css"
-export default function ImageCard({
+
+interface ImageCardProps{
     item: {
+        description: string;
+        urls: {
+            small: string;
+            regular: string;
+        };
+        likes: number;
+    };
+    onImgClick: (url: string, likes: number) => void;
+}
+export default function ImageCard({
+    item:  {
     description,
         urls: {small, regular},
     likes
-}, onImgClick }) {
+}, onImgClick }:ImageCardProps ){
     return (
         <div className={css.container}>
             <div className={css.wrap}>

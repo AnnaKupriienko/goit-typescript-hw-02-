@@ -15,12 +15,18 @@ const customStyles = {
     },
      
 };
+interface ImageModalProps{
+  imgModal: boolean;
+  onModalClose: ()=>void;
+  image: string;
+  imgLikes: number;
+}
 export default function ImageModal({
     imgModal, 
     onModalClose,
     image,
     imgLikes
-}) {
+}: ImageModalProps) {
     return (
     <div className={css.container} >
             <Modal

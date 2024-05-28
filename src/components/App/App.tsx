@@ -7,15 +7,21 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn"
 import ImageModal from "../ImageModal/ImageModal"
 import { fetchPictures } from "../../pictures-api"
 
+interface Image {
+  id: string;
+  url: string;
+  likes: number;
+}
+
 export default function App() {
-  const [img, setImg] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
-  const [modal, setModal] = useState(false);
-  const [likes, setLikes] = useState(null);
-  const [imgUrl, setImgUrl] = useState([])
+  const [img, setImg] = useState<Image[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [query, setQuery] = useState<string>("");
+  const [modal, setModal] = useState<boolean>(false);
+  const [likes, setLikes] = useState<number | null>(null);
+  const [imgUrl, setImgUrl] = useState<string[]>([])
 
   const handleLoadMore = () => {
   setPage(page +1);
@@ -30,7 +36,7 @@ export default function App() {
        try {
         setError(false);
       setIsLoading(true);
-      const data = await fetchPictures(query,page);
+      const data:Image[] = await fetchPictures(query,page);
       setImg((prevImg) => {
         return [...prevImg, ...data]
       });
@@ -44,13 +50,13 @@ export default function App() {
     getImages();
   },[query,page])
   
-  const handleSearch = (newQuery) => {
+  const handleSearch = (newQuery: string) => {
     setQuery(newQuery);
     setPage(1);
     setImg([]);
 
   }
-  const openModal = (url,like) => {
+  const openModal = (url:string[],like:number) => {
     setLikes(like);
     setModal(true);
     setImgUrl(url);
@@ -66,7 +72,7 @@ export default function App() {
       {error && <ErrorMessage />}
       {img.length > 0 && !isLoading && <LoadMoreBtn onClick={handleLoadMore}/>} 
       {modal && (<ImageModal
-        image = {imgUrl}
+        image= {imgUrl}
         imgModal={modal}
         item = {img}
         imgLikes={likes}
