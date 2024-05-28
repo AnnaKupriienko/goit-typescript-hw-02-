@@ -1,0 +1,22 @@
+.img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.likes {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    text-align: center;
+    color: rgb(43, 43, 113);
+}
+
+.icon {
+    color: rgb(43, 43, 113);
+}
