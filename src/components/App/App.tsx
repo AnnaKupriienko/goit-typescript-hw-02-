@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React ,{ useEffect, useState } from "react";
 import SearchBar from "../SearchBar/SearchBar"
 import ImageGallery from "../ImageGallery/ImageGallery"
-import Loader from "../Loader/Loader"
+import Loading from "../Loader/Loader"
 import ErrorMessage from "../ErrorMessage/ErrorMessage"
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn"
 import ImageModal from "../ImageModal/ImageModal"
@@ -72,7 +72,7 @@ export default function App() {
     <>
     <SearchBar onSearch={handleSearch}/>
       {img.length > 0 && <ImageGallery items={img} onImgClick={openModal} />} 
-      {isLoading && <Loader />}
+      {isLoading && <Loading />}
       {error && <ErrorMessage />}
       {img.length > 0 && !isLoading && <LoadMoreBtn onClick={handleLoadMore}/>} 
       {modal && (<ImageModal
