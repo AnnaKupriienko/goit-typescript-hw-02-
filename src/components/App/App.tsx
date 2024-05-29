@@ -9,7 +9,11 @@ import { fetchPictures } from "../../pictures-api"
 
 interface Image {
   id: string;
-  url: string;
+  description: string;
+  urls: {
+    small: string;
+    regular: string;
+  };
   likes: number;
 }
 
@@ -20,8 +24,8 @@ export default function App() {
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
   const [modal, setModal] = useState<boolean>(false);
-  const [likes, setLikes] = useState<number | null>(null);
-  const [imgUrl, setImgUrl] = useState<string[]>([])
+  const [likes, setLikes] = useState<number>(0);
+  const [imgUrl, setImgUrl] = useState<string>('')
 
   const handleLoadMore = () => {
   setPage(page +1);

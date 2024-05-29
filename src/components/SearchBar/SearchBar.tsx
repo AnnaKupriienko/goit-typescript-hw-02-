@@ -10,7 +10,7 @@ export default function SearchBar({ onSearch }:SearchBarProps) {
   const handleSubmit = (event:FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
-    const data = form.elements.img.value;
+    const data = (form.elements.namedItem("img") as HTMLInputElement).value;
     if (!data){
       toast.error("Please, enter your request!")
       return;
