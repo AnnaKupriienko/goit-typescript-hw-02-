@@ -78,7 +78,7 @@ export default function App() {
       {modal && (<ImageModal
         image= {imgUrl}
         imgModal={modal}
-        item = {img}
+        // item = {img}
         imgLikes={likes}
         onModalClose={modalClose}
       />)}
