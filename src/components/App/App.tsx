@@ -60,7 +60,7 @@ export default function App() {
     setImg([]);
 
   }
-  const openModal = (url:string[],like:number) => {
+  const openModal = (url:string,like:number) => {
     setLikes(like);
     setModal(true);
     setImgUrl(url);
